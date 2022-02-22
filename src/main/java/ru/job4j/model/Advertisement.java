@@ -1,0 +1,39 @@
+package ru.job4j.model;
+
+import javax.persistence.*;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+@Table(name = "advertisements")
+public class Advertisement {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date created = new Date(System.currentTimeMillis());
+    private String description;
+    private String mark;
+    private String body;
+    private boolean done = false;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    private Car car;
+
+    public static Advertisement of(String description, String mark, String body, Car car) {
+        Advertisement advertisement = new Advertisement();
+        advertisement.description = description;
+        advertisement.mark = mark;
+        advertisement.body = body;
+        advertisement.car = car;
+        return advertisement;
+    }
+
+
+
+
+
+}
