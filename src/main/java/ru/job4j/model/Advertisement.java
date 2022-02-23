@@ -19,6 +19,7 @@ public class Advertisement {
     private String mark;
     private String body;
     private boolean done = false;
+    private boolean photo = false;
 
     @OneToOne(fetch = FetchType.LAZY)
     private Car car;
@@ -32,8 +33,19 @@ public class Advertisement {
         return advertisement;
     }
 
+    public boolean isPhoto() {
+        return photo;
+    }
 
+    public void setPhoto(boolean photo) {
+        this.photo = photo;
+    }
 
+    public String getMark() {
+        return mark;
+    }
 
-
+    public void setMark(String mark) {
+        this.mark = mark;
+    }
 }
