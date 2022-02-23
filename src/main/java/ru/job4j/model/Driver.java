@@ -14,11 +14,11 @@ public class Driver {
 
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Car> car = new ArrayList<>();
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<Car> cars = new ArrayList<>();
 
     public void addCar(Car car) {
-        this.car.add(car);
+        this.cars.add(car);
     }
 
     public static Driver of(String name) {
