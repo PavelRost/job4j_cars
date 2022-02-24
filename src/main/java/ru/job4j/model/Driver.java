@@ -2,7 +2,9 @@ package ru.job4j.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "driver")
@@ -15,7 +17,7 @@ public class Driver {
     private String name;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<Car> cars = new ArrayList<>();
+    private Set<Car> cars = new HashSet<>();
 
     public void addCar(Car car) {
         this.cars.add(car);
