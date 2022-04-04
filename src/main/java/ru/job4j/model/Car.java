@@ -33,4 +33,12 @@ public class Car {
         car.engine = engine;
         return  car;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

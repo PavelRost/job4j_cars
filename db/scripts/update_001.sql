@@ -33,5 +33,7 @@ CREATE TABLE if NOT EXISTS advertisement (
     body TEXT,
     created timestamp,
     done boolean,
-    car_id INTEGER REFERENCES car (id)
+    photo boolean,
+    car_id INTEGER REFERENCES car (id),
+    user_id INTEGER REFERENCES users (id)
 );
