@@ -1,7 +1,5 @@
 package ru.job4j.controller;
 
-import ru.job4j.model.Advertisement;
-import ru.job4j.model.User;
 import ru.job4j.service.AdsService;
 
 import javax.servlet.ServletException;
