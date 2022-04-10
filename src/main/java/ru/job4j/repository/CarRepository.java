@@ -7,20 +7,14 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import ru.job4j.model.Car;
+import ru.job4j.service.HbnService;
 
 import java.util.List;
 import java.util.function.Function;
 
 public class CarRepository {
 
-    private final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-            .configure().build();
-
-    private final SessionFactory sf = new MetadataSources(registry)
-            .buildMetadata().buildSessionFactory();
-
     public CarRepository() {
-
     }
 
     private static final class LazyCar {
@@ -40,7 +34,7 @@ public class CarRepository {
     }
 
     private <T> T tx(final Function<Session, T> command) {
-        final Session session = sf.openSession();
+        final Session session = HbnService.instOf().getSessionFactory().openSession();
         final Transaction tx = session.beginTransaction();
         try {
             T rsl = command.apply(session);
